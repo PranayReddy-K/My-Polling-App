@@ -1,0 +1,69 @@
+services:
+  poll:
+    build:
+      context: ./poll
+      target: dev
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - ./poll:/usr/local/app
+    ports:
+      - "5000:80"
+    networks:
+      - front-tier
+      - back-tier
+
+  redis:
+    image: redis
+    networks:
+      - back-tier
+
+  worker:
+    build:
+      context: ./worker
+    depends_on:
+      - redis
+      - db
+    networks:
+      - back-tier
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    networks:
+      - back-tier
+
+  results:
+    build: ./results
+    depends_on:
+      - db
+    volumes:
+      - ./results:/usr/local/app
+    ports:
+      - "5001:80"
+    networks:
+      - front-tier
+      - back-tier
+
+  data-population:
+    build: ./data-population
+    depends_on:
+      - poll
+    networks:
+      - front-tier
+    restart: "no"
+
+volumes:
+  db-data:
+
+networks:
+  front-tier:
+  back-tier:
