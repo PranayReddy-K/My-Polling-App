@@ -28,7 +28,6 @@ body {
 #background-stats-1 {
   background-color: #2196f3;
 }
-
 #background-stats-2 {
   background-color: #00cbca;
 }
@@ -52,7 +51,7 @@ body {
   position: absolute;
   bottom: 40px;
   right: 20px;
-  color: #fff;
+  color: black;
   opacity: 0.5;
   font-size: 45px;
   font-weight: 600;
@@ -100,15 +99,18 @@ body {
   float: left;
 }
 #background-stats {
+  display: flex;
+  width: 100%;
+  height: 100%; /* Adjust height as needed */
   z-index: 1;
   height: 100%;
   width: 100%;
   position: absolute;
 }
 #background-stats div {
+  height: 100%;
+  transition: width 0.5s ease; /* Smooth transition when width changes */
   transition: width 400ms ease-in-out;
   display: inline-block;
-  margin-bottom: -4px;
-  width: 50%;
-  height: 100%;
+  width: 100%;
 }

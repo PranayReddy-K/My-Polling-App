@@ -1,0 +1,51 @@
+name: Build Poll
+
+on:
+  push:
+    branches:
+      - "main"
+    # Trigger build on push to 'main' branch
+    paths:
+      - "vote/**"
+      - ".github/workflows/ci-cd-build-poll.yaml"
+  pull_request:
+    branches:
+      - "main"
+    # Trigger build on pull request to 'main' branch
+    paths:
+      - "vote/**"
+      - ".github/workflows/ci-cd-build-poll.yaml"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    needs: build # Ensures this job runs after the 'build' job
+
+    steps:
+      # Step 1: Set up Docker Buildx for multi-platform builds
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 2: Log in to Docker Hub using credentials stored in secrets
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      # Step 3: Build and push Docker image to Docker Hub
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          # Path to the Dockerfile
+          file: poll/Dockerfile
+
+          # Platforms to build the Docker image for
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+
+          # Push the built image to Docker Hub
+          push: true
+
+          # Tags for the Docker image
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/my-polling-app:poll-${{ github.run_id }}
