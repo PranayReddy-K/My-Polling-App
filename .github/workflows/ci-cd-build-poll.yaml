@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "Listing all files in the repository:"
           ls -R
-          echo "Tag is ${{ secrets.DOCKER_USERNAME }}/my-polling-app/poll:105"
+          echo "Tag  ${{ secrets.DOCKER_USERNAME }}/my-polling-app/poll:105"
       # Step 1: Set up Docker Buildx for multi-platform builds
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
