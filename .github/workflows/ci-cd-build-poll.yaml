@@ -48,8 +48,8 @@ jobs:
           # Path to the Dockerfile
           file: Poll/Dockerfile
 
-          # # Platforms to build the Docker image for
-          # platforms: linux/amd64,linux/arm64,linux/arm/v7
+          # Platforms to build the Docker image for
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
           # Push the built image to Docker Hub
           push: true
