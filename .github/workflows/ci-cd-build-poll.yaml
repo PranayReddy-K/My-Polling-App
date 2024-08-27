@@ -36,6 +36,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
+          context: Poll
           # Path to the Dockerfile
           file: Poll/Dockerfile
 
