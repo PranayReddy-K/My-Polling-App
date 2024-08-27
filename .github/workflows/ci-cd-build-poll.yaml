@@ -54,4 +54,4 @@ jobs:
           push: true
 
           # Tags for the Docker image
-          tags: my-polling-app:${{ github.run_id }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/my-polling-app:${{ github.run_id }}
