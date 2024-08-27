@@ -5,7 +5,7 @@ while ! timeout 1 bash -c "echo > /dev/tcp/poll/80"; do
 done
 
 curl -sS -X POST --data "vote=b" http://poll > /dev/null
-sleep 10
+sleep 13
 
 if phantomjs render.js http://results | grep -q '1 vote'; then
   echo -e "\\e[42m------------"

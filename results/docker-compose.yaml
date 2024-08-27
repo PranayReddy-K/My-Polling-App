@@ -9,7 +9,7 @@ services:
       - front-tier
 
   poll:
-    build: ../poll/
+    build: ../Poll/
     ports: ["80"]
     depends_on:
       - redis

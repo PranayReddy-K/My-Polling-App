@@ -1,7 +1,7 @@
 services:
   poll:
     build:
-      context: ./poll
+      context: ./Poll
       target: dev
     depends_on:
       redis:
@@ -13,7 +13,7 @@ services:
       retries: 3
       start_period: 10s
     volumes:
-      - ./poll:/usr/local/app
+      - ./Poll:/usr/local/app
     ports:
       - "5000:80"
     networks:

@@ -6,14 +6,14 @@ on:
       - "main"
     # Trigger build on push to 'main' branch
     paths:
-      - "vote/**"
+      - "Poll/**"
       - ".github/workflows/ci-cd-build-poll.yaml"
   pull_request:
     branches:
       - "main"
     # Trigger build on pull request to 'main' branch
     paths:
-      - "vote/**"
+      - "Poll/**"
       - ".github/workflows/ci-cd-build-poll.yaml"
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           # Path to the Dockerfile
-          file: poll/Dockerfile
+          file: Poll/Dockerfile
 
           # Platforms to build the Docker image for
           platforms: linux/amd64,linux/arm64,linux/arm/v7
