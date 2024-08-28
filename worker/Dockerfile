@@ -1,5 +1,5 @@
 # Use a specific platform for building the image based on the build environment
-FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:7.0 as build
+FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 # Define build-time arguments for target platform, architecture, and build platform
 ARG TARGETPLATFORM
