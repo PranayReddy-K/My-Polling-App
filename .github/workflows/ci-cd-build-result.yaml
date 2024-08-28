@@ -34,7 +34,7 @@ jobs:
           args: "-- build --abort-on-container-exit --remove-orphans"
 
       - name: Show container logs
-        run: docker-compose logs --follow
+        run: docker compose logs --follow
 
   # docker:
   #   runs-on: ubuntu-latest
