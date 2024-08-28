@@ -30,8 +30,7 @@ jobs:
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
           compose-file: "./results/docker-compose.yaml"
-          command: up
-          args: "-- build --abort-on-container-exit --remove-orphans"
+          up-flags: "-- build --abort-on-container-exit --remove-orphans"
 
       - name: Show container logs
         run: docker compose logs --follow
