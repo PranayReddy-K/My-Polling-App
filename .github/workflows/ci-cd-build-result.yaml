@@ -33,6 +33,7 @@ jobs:
           command: up
 
       - name: Wait for SUT service to stop
+        working-directory: ./results # Set the directory where docker-compose.yml is located
         run: |
           while [ "$(docker compose ps -q sut | xargs docker inspect -f '{{.State.Status}}')" != "exited" ]; do
             sleep 5
