@@ -34,7 +34,7 @@ jobs:
 
       - name: Wait for SUT service to stop
         run: |
-          while [ "$(docker compose ps -q results-sut-1 | xargs docker inspect -f '{{.State.Status}}')" != "exited" ]; do
+          while [ "$(docker compose ps -q sut | xargs docker inspect -f '{{.State.Status}}')" != "exited" ]; do
             sleep 5
           done
 
