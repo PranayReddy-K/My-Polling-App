@@ -29,7 +29,7 @@ jobs:
       - name: Run docker-compose up
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-          compose-file: "./results/docker-compose.yaml"
+          compose-file: "./docker-compose.yaml"
           up-flags: "--abort-on-container-exit --remove-orphans"
           cwd: /home/runner/work/My-Polling-App/My-Polling-App/results
 
