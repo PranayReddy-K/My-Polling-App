@@ -27,17 +27,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run docker-compose up
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "./results/docker-compose.yaml"
-          command: up
-          args: "-- build"
+        working-directory: ./results # Set the directory where docker-compose.yml is located
+        run: docker compose up
 
       - name: Wait for SUT service to stop
         working-directory: ./results # Set the directory where docker-compose.yml is located
         run: |
-          echo "Listing files after SUT service has stopped:"
-          ls -l
           while [ "$(docker compose ps -q sut | xargs docker inspect -f '{{.State.Status}}')" != "exited" ]; do
             sleep 5
           done
