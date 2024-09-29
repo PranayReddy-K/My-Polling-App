@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:15-apline
+          image: postgres:15-alpine
           env:
             - name: POSTGRES_USER
               value: postgres
