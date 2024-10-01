@@ -12,7 +12,7 @@ deployment2:
   image:
     repository: pranayreddy12/my-polling-app # Docker image repository for the worker app
     pullPolicy: IfNotPresent # Pull policy for the image; only pull if not already present
-    tag: 11095257672 # Specific image tag (version) for the worker app
+    tag: 11122826672
 
 # Deployment 3: Results Application
 deployment3:
