@@ -15,5 +15,5 @@ spec:
         app: worker
     spec:
       containers:
-        - image: pranayreddy12/my-polling-app:worker-11095257672
+        - image: pranayreddy12/my-polling-app:worker-{{.Values.deployment2.image.tag}}
           name: worker

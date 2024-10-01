@@ -15,7 +15,7 @@ spec:
         app: vote
     spec:
       containers:
-        - image: pranayreddy12/my-polling-app:poll-10595546042
+        - image: pranayreddy12/my-polling-app:poll-{{.Values.deployment1.image.tag}}
           name: vote
           ports:
             - containerPort: 80

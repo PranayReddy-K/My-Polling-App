@@ -15,7 +15,7 @@ spec:
         app: result
     spec:
       containers:
-        - image: pranayreddy12/my-polling-app:result-10605209132
+        - image: pranayreddy12/my-polling-app:result-{{.Values.deployment3.image.tag}}
           name: result
           ports:
             - containerPort: 80
