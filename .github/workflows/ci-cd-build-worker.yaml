@@ -73,7 +73,7 @@ jobs:
       - name: Update image tag in Helm chart
         # Use sed to update the image tag in the Helm values.yaml file with the GitHub run ID
         run: |
-          sed -i 's/\(deployment2:\s*\n.*tag:\s*\).*/\1${{ github.run_id }}/' specifications/values.yaml
+          sed -i '/deployment2:/,/tag:/s/tag: .*/tag: '"${{ github.run_id }}"'/' specifications/values.yaml
 
       - name: Commit and push changes
         run: |
