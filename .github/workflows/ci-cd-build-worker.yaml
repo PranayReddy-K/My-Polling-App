@@ -82,6 +82,8 @@ jobs:
 
           git add specifications/values.yaml
 
+          cat specifications/values.yaml
+
           git commit -m "feat: Update image tag in Helm chart to GitHub run ID ${{ github.run_id }}"
 
           git push
